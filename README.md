@@ -33,7 +33,8 @@ Creator is not necessary member of the group.
 
 
 ### PUBLISH 
-– is the common object for Pictures, Posts and Albums
+Publish is the common object for Pictures, Posts and Albums
+
 
 ### POST 
 Post is a type of PUBLISH. Post is created by user, can have picture or without picture
@@ -52,12 +53,14 @@ Album is owned by a user.
 
 There are many pictures in an album.
 
+
 ### PICTURES
 Picture is a type of PUBLISH. 
 
 A Picture can be tagged by users.
 
 A Picture belongs to only one album.
+
 
 ### MESSAGES 
 can be sent from one user to another (receiver and sender).
