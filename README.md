@@ -22,13 +22,19 @@ Difference between pictures for post, album and just picture without post: is Pi
 
 ### MESSAGES 
 – can be sent from one user to another (receiver and sender)
-Queries of the project requer to show information for specific user, so in most cases I declare variable  @SpecificUserID.
+
+
 
 ## There are 3 files for this project: 
+
 1_CreateDataBaseTables
+
 2_InsertData
+
 3_Queries
 
-You can run them consequentially to create a new database SocialNetwork with sample data inside.
+You can run them consequentially to create a new database SocialNetwork with sample data inside. 
+
+Queries of the project requer to show information for specific user, so in most cases I declare variable  @SpecificUserID.
 
 For every query I suggested @SpecificUserID that has enough data to display how query works.
