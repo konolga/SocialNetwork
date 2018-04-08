@@ -10,25 +10,31 @@ The project is to describe a social network web site, storing data on Users, the
 ### GROUPS 
 – created by one user, but can have many members (other users). Creator is not necessary member of the group. 
 
-###PUBLISH 
+### PUBLISH 
 – is the common object for Pictures, Posts and Albums
 
-###POST 
+### POST 
 – is type of PUBLISH. Post is created by user, can have picture or without picture
 
-###ALBUM 
+### ALBUM 
 - is type of PUBLISH. Contains different pictures.
 Difference between pictures for post, album and just picture without post: is PictureType key
 
-###MESSAGES 
+### MESSAGES 
 – can be sent from one user to another (receiver and sender)
-Queries of the project requer to show information for specific user, so in most cases I declare variable  @SpecificUserID.
+
+
 
 ## There are 3 files for this project: 
+
 1_CreateDataBaseTables
+
 2_InsertData
+
 3_Queries
 
- You can run them consequentially to create a new database SocialNetwork with sample data inside.
+You can run them consequentially to create a new database SocialNetwork with sample data inside. 
+
+Queries of the project requer to show information for specific user, so in most cases I declare variable  @SpecificUserID.
 
 For every query I suggested @SpecificUserID that has enough data to display how query works.
