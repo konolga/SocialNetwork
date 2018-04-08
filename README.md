@@ -16,7 +16,7 @@ The project is to describe a social network web site, storing data on Users, the
 ### POST 
 – is type of PUBLISH. Post is created by user, can have picture or without picture
 
-### ALBUM 
+### ALBUM
 - is type of PUBLISH. Contains different pictures.
 Difference between pictures for post, album and just picture without post: is PictureType key
 
