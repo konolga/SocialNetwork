@@ -7,7 +7,7 @@ USE SocialNetwork
 --1. Show User’s News Feed-------------------------------------------------------------
 --Display the list of posts that should be seen on the news feed page (All my Friend posts).
 -- Choose the connected user and Order the posts by posted date. (Specific user)
-declare @SpecificUserID int = 1
+declare @SpecificUserID int = 11
 select  DateOfPublish, nu.UserFirstName+ ' '+ nu.UserLastName FriendName, 'added picture' Action, '-' Description, pic.PictureURL
 from Publish pub join Picture pic on  pic.PictureID = pub.PublishID
 	 join NetworkUsers nu on nu.UserID=pub.UserID
@@ -92,7 +92,7 @@ ORDER BY COUNT(UserID2) desc
 
 ------------------------------------------------------------------------------------
 --5. Best Friend
---For each user display the best friend. Best Friend is the one 
+--For user display the best friend. Best Friend is the one 
 --who sent me the maximum messages and he likes at least 5 of my Posts.
 ------------------------------------------------------------------------------------
 DECLARE @SpecificUserID4 INT = 11;
@@ -105,23 +105,21 @@ HAVING ReceiverID=@SpecificUserID4
 		--check that sender of max msgs is really friend
 		AND SenderID IN (SELECT UserID2 
 						from dbo.Friendship
-						WHERE UserID1=11)
+						WHERE UserID1=@SpecificUserID4)
 		--find who sent me the maximum messages 
-		AND COUNT(SenderID)=(SELECT MAX(NumberOfMessages) 
+		AND COUNT(SenderID) in (SELECT MAX(NumberOfMessages) 
 							 FROM   (
-									SELECT SenderID, COUNT(SenderID) NumberOfMessages
-									FROM dbo.UserMessages m JOIN dbo.Friendship f ON m.SenderID=f.UserID2
-									WHERE ReceiverID=@SpecificUserID4 AND f.UserID1=@SpecificUserID4 
+									SELECT SenderID , COUNT(SenderID) NumberOfMessages
+									FROM dbo.UserMessages 
+									WHERE ReceiverID=@SpecificUserID4 
 									GROUP BY SenderID ) MessagesFromFriends
 									)
 ),
-
-
 Friends5Likes AS
 (
 SELECT COUNT(l.UserID) NumberOfLikes, l.UserID UserIDWithMostLikes
 FROM dbo.Likes l JOIN Publish p ON p.PublishID = l.PublishID
-WHERE p.UserID=@SpecificUserID4 
+WHERE p.UserID=@SpecificUserID4
 GROUP BY  l.UserID
 HAVING COUNT(l.UserID)>=5
 )
@@ -133,7 +131,7 @@ FROM FriendMaxMsg m JOIN Friends5Likes l ON m.FriendMaxMsg=l.UserIDWithMostLikes
 --6. Portrait
 ---Display list of pictures which I am the only person who tagged on. 
 ------------------------------------------------------------------------------------
-DECLARE @SpecificUserID5 INT = 11;
+DECLARE @SpecificUserID5 INT = 12;
 WITH PicturesWithOneTagOnly AS
 (
 SELECT PictureID
@@ -159,7 +157,7 @@ FROM PicturesWithOneTagOnly o JOIN PicturesWhereSpecificUserTaged u ON u.Picture
 --Display the Usage of the website components per year. How many posts were written, 
 --how many pictures and Albums were uploaded. Order the Result by year. 
 ------------------------------------------------------------------------------------
-SELECT YEAR(DateOfPublish), PublishType, count (PublishID)
+SELECT YEAR(DateOfPublish) Year, PublishType, count (PublishID)
 FROM publish 
 GROUP BY YEAR(DateOfPublish), PublishType
 ORDER BY YEAR(DateOfPublish)

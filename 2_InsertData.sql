@@ -47,6 +47,11 @@ INSERT INTO GroupMembership ( GroupID, UserID) VALUES
 
 
 INSERT INTO UserMessages ( SenderID, ReceiverID, Msg_Subject, Msg_Body, Msg_Date) VALUES
+(10,11,'empty ','you are my best friend ','2013-11-25'),
+(10,11,'empty ','lets go to pub ','2013-11-25'),
+(10,11,'empty ','hey man','2013-11-25'),
+(10,11,'empty ','funny ','2013-11-25'),
+(10,11,'empty ','whats up ','2013-11-25'),
 (1,2,'upgrade ','Feed your guests without breaking the bank ','2013-11-25'),
 (1,2,'just ','Where do all these toys go? ','2012-10-24'),
 (1,2,'content ','Get more kitchen space with these easy fixes ','2011-09-23'),
